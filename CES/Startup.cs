@@ -64,6 +64,9 @@ namespace CES
             //configure DI container
             services.AddScoped<ILoginCore, LoginCore>();
             services.AddScoped<ILoginRepo, LoginRepo>();
+
+            services.AddScoped<ILogoutCore, LogoutCore>();
+            services.AddScoped<ILogoutRepo, LogoutRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -78,6 +81,7 @@ namespace CES
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

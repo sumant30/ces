@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace CES.Api.Models
 {
-    public class LoginModel : IValidatableObject
+    public class LogoutModel:IValidatableObject
     {
         [Required]
         public string Username { get; set; }
         [Required]
-        public string Password { get; set; }
+        public string RefreshToken { get; set; }
         [Required]
         public string GrantType { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (GrantType?.ToLower() != GrantTypes.Password.ToString().ToLower())
+            if (GrantType != GrantTypes.Sent.ToString())
             {
-                yield return new ValidationResult("A grant type of password has to be supplied in body");
+                yield return new ValidationResult("A grant type of sent has to be supplied in body");
             }
         }
     }

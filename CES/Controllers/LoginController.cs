@@ -19,16 +19,13 @@ namespace CES.Api.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        private ILoginCore _core;
-        private ILogger<LoginController> _logger;
-        private IConfiguration _config;
+        private ILoginCore _core;       
 
-        public LoginController(ILoginCore core, ILogger<LoginController> logger, IConfiguration config)
+        public LoginController(ILoginCore core)
         {
-            _core = core;
-            _logger = logger;
-            _config = config;
+            _core = core;           
         }
+
         // POST: api/Login
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]LoginModel model)
@@ -43,7 +40,7 @@ namespace CES.Api.Controllers
                 }
                 return NotFound($"{model.Username} does not exists");
             }
-            return BadRequest("Username & Password should not be empty.");
+            return BadRequest();
         }
 
     }
