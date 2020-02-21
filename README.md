@@ -1,4 +1,4 @@
-# ces
+# CES
 Project created in VS 2019, with dotnet core 3.1.
 
 It has a project structure of 
@@ -13,7 +13,7 @@ Contains all the common entities, enums and interfaces which is used across the 
 
 3. Core
 
-Contains the business logic for the solution.
+Contains the bussiness logic for the solution.
 
 4. Repository
 
