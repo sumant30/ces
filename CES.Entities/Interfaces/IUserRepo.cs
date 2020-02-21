@@ -8,5 +8,6 @@ namespace CES.Entities.Interfaces
     public interface IUserRepo
     {
         Task<Guid> GetAsync(string username, string refreshToken);
+        Task<Guid> GetAsync(string username);
     }
 }

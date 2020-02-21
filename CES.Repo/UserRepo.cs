@@ -36,5 +36,22 @@ namespace CES.Repo
                 return userId;
             }
         }
+
+        public async Task<Guid> GetAsync(string username)
+        {
+            string connectionString = Convert.ToString(_config.GetConnectionString("CESConnection"));
+            using (IDbConnection con = new SqlConnection(connectionString))
+            {
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
+                DynamicParameters parameter = new DynamicParameters();
+                parameter.Add("@Username", username);
+               
+                var userId = await con.ExecuteScalarAsync<Guid>("GetUserIdByUsername", parameter, commandType: CommandType.StoredProcedure);
+
+                return userId;
+            }
+        }
     }
 }

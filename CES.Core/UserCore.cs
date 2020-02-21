@@ -1,7 +1,5 @@
 ﻿using CES.Entities.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CES.Core
@@ -16,6 +14,19 @@ namespace CES.Core
         public async Task<Guid> GetAsync(string username, string refreshToken)
         {
             return await _repo.GetAsync(username, refreshToken);
+        }
+
+        public async Task<bool> ValidateClientSecret(string username, string clientSecret)
+        {
+            var userId = await _repo.GetAsync(username);
+            if (userId != Guid.Empty)
+            {
+                if (userId.ToString().Replace("-", "").Equals(clientSecret))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

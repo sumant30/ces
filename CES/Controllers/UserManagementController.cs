@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CES.Entities.Enums;
+using CES.Entities.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using CES.Api.Models;
-using CES.Entities.Enums;
-using CES.Entities.Interfaces;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+
 
 namespace CES.Api.Controllers
 {
@@ -75,11 +73,7 @@ namespace CES.Api.Controllers
 			}
 			return BadRequest();
 		}
-
-		private async Task<Guid> GetAdminId(string refreshToken, Claim username) => await _user.GetAsync(username?.Value, refreshToken);
-
-		private Claim GetEmailAddress() => @User.Claims.FirstOrDefault(c => c.Type.Contains("emailaddress"));
-
+				
 
 		// POST: api/UserManagement/{userId}/Revoke/{applicationId}
 		[Route("{userId:Guid}/Revoke/{applicationId:Guid}")]
@@ -96,5 +90,9 @@ namespace CES.Api.Controllers
 		{
 			throw new NotImplementedException();
 		}
+
+		private async Task<Guid> GetAdminId(string refreshToken, Claim username) => await _user.GetAsync(username?.Value, refreshToken);
+
+		private Claim GetEmailAddress() => @User.Claims.FirstOrDefault(c => c.Type.Contains("emailaddress"));
 	}
 }

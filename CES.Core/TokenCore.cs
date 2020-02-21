@@ -1,4 +1,6 @@
-﻿using CES.Entities.Interfaces;
+﻿using CES.Core.Helpers;
+using CES.Entities.DTO;
+using CES.Entities.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,9 +15,18 @@ namespace CES.Core
         {
             _repo = repo;
         }
-        public Task SaveTokenAsync(Guid userId, string refreshToken)
+        public async Task<UserDTO> GenerateNewTokenAsync(Guid userId)
         {
-            throw new NotImplementedException();
+            var refreshToken = GenerateRefreshToken.GetToken();
+
+            var user = await _repo.SaveTokenAsync(userId, refreshToken);
+
+            return new UserDTO() { Username = user.Username, RefreshToken = refreshToken, Role = user.Role,ClientSecret=user.Id.ToString().Replace("-", "") };
+        }
+
+        public async Task Revoke(Guid userId)
+        {
+            await _repo.Revoke(userId);
         }
     }
 }

@@ -25,9 +25,12 @@ namespace CES.Core
             {
                 var refreshToken = GenerateRefreshToken.GetToken();
 
-                await _token.SaveTokenAsync(user.Id, refreshToken);
+                var saved = await _token.SaveTokenAsync(user.Id, refreshToken);
 
-                return new UserDTO() { Username = user.Username, RefreshToken = refreshToken, Role = user.Role };
+                if (!string.IsNullOrEmpty(saved.RefreshToken)) 
+                {
+                    return new UserDTO() { Username = user.Username, RefreshToken = refreshToken, Role = user.Role,ClientSecret = user.Id.ToString().Replace("-","") };
+                }                
             }
             return new UserDTO();
         }

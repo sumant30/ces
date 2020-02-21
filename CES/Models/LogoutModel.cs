@@ -18,9 +18,9 @@ namespace CES.Api.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (GrantType != GrantTypes.Sent.ToString())
+            if (GrantType?.ToLower() != GrantTypes.Sent.ToString().ToLower())
             {
-                yield return new ValidationResult("A grant type of sent has to be supplied in body");
+                yield return new ValidationResult($"A grant type of { GrantTypes.Sent.ToString() } has to be supplied in body");
             }
         }
     }

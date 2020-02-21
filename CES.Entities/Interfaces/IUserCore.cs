@@ -8,5 +8,6 @@ namespace CES.Entities.Interfaces
     public interface IUserCore
     {
         Task<Guid> GetAsync(string username, string refreshToken);
+        Task<bool> ValidateClientSecret(string username,string clientSecret);
     }
 }
