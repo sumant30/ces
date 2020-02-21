@@ -27,7 +27,7 @@ namespace CES.Api.Controllers
         {
             if (ModelState.IsValid) 
             {
-                var user  = await _core.Logout(model.Username,model.RefreshToken);
+                var user  = await _core.LogoutAsync(model.Username,model.RefreshToken);
 
                 if (string.IsNullOrEmpty(user?.Username)) 
                 {

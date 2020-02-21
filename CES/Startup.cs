@@ -67,6 +67,18 @@ namespace CES
 
             services.AddScoped<ILogoutCore, LogoutCore>();
             services.AddScoped<ILogoutRepo, LogoutRepo>();
+
+            services.AddScoped<ITokenCore, TokenCore>();
+            services.AddScoped<ITokenRepo, TokenRepo>();
+
+            services.AddScoped<IUserCore, UserCore>();
+            services.AddScoped<IUserRepo, UserRepo>();
+
+            services.AddScoped<IUserCore, UserCore>();
+            services.AddScoped<IUserRepo, UserRepo>();
+
+            services.AddScoped<IUserManagementCore, UserManagementCore>();
+            services.AddScoped<IUserManagementRepo, UserManagementRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

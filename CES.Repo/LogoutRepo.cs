@@ -19,27 +19,9 @@ namespace CES.Repo
         {
             _config = config;
         }
+           
 
-        public async Task<Guid> RefreshTokenExists(string username, string refreshToken)
-        {
-            string connectionString = Convert.ToString(_config.GetConnectionString("CESConnection"));
-            using (IDbConnection con = new SqlConnection(connectionString))
-            {
-                if (con.State == ConnectionState.Closed)
-                    con.Open();
-
-                DynamicParameters parameter = new DynamicParameters();
-                parameter.Add("@Username", username);
-                parameter.Add("@RefreshToken", refreshToken);
-
-
-                var userId = await con.ExecuteScalarAsync<Guid>("GetUserId", parameter, commandType: CommandType.StoredProcedure);
-
-                return userId;
-            }
-        }
-
-        public async Task<User> Logout(Guid userId)
+        public async Task<User> LogoutAsync(Guid userId)
         {
             string connectionString = Convert.ToString(_config.GetConnectionString("CESConnection"));
             using (IDbConnection con = new SqlConnection(connectionString))

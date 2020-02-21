@@ -1,5 +1,4 @@
-﻿using CES.Entities.DB;
-using CES.Entities.Interfaces;
+﻿using CES.Entities.Interfaces;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -8,18 +7,18 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
-using System.Linq;
 
 namespace CES.Repo
 {
-    public class LoginRepo : ILoginRepo
+    public class UserRepo : IUserRepo
     {
         private IConfiguration _config;
-        public LoginRepo(IConfiguration config)
+        public UserRepo(IConfiguration config)
         {
             _config = config;
         }
-        public async Task<User> AuthenticateAsync(string username, string password)
+
+        public async Task<Guid> GetAsync(string username, string refreshToken)
         {
             string connectionString = Convert.ToString(_config.GetConnectionString("CESConnection"));
             using (IDbConnection con = new SqlConnection(connectionString))
@@ -29,12 +28,13 @@ namespace CES.Repo
 
                 DynamicParameters parameter = new DynamicParameters();
                 parameter.Add("@Username", username);
-                parameter.Add("@Password", password);
+                parameter.Add("@RefreshToken", refreshToken);
 
-                var user = await con.QueryAsync<User>("AuthenticateUser", parameter, commandType: CommandType.StoredProcedure);
 
-                return user.FirstOrDefault();
+                var userId = await con.ExecuteScalarAsync<Guid>("GetUserId", parameter, commandType: CommandType.StoredProcedure);
+
+                return userId;
             }
-        }        
+        }
     }
 }

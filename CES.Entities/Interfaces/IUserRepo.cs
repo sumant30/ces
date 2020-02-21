@@ -1,13 +1,12 @@
-﻿using CES.Entities.DB;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CES.Entities.Interfaces
 {
-    public interface ILogoutRepo
+    public interface IUserRepo
     {
-        Task<User> LogoutAsync(Guid userId);
+        Task<Guid> GetAsync(string username, string refreshToken);
     }
 }

@@ -1,4 +1,4 @@
-﻿using CES.Entities.DTO;
+﻿using CES.Entities.DB;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace CES.Entities.Interfaces
 {
-    public interface ILogoutCore
+    public interface IUserManagementRepo
     {
-        Task<UserDTO> LogoutAsync(string username,string refreshToken);
+        Task<List<User>> Get();
+        Task<User> Get(Guid userId);
     }
 }

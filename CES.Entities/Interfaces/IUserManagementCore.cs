@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace CES.Entities.Interfaces
 {
-    public interface ILogoutCore
+    public interface IUserManagementCore
     {
-        Task<UserDTO> LogoutAsync(string username,string refreshToken);
+        Task<IEnumerable<UserForAdminDTO>> Get();
+        Task<UserForAdminDTO> Get(Guid userId);
     }
 }

@@ -10,17 +10,20 @@ namespace CES.Core
     public class LogoutCore : ILogoutCore
     {
         private ILogoutRepo _repo;
-        public LogoutCore(ILogoutRepo repo)
+        private IUserRepo _user;
+
+        public LogoutCore(ILogoutRepo repo, IUserRepo user)
         {
             _repo = repo;
+            _user = user;
         }
-        public async Task<UserDTO> Logout(string username,string refreshToken)
+        public async Task<UserDTO> LogoutAsync(string username,string refreshToken)
         {
-            var userId = await _repo.RefreshTokenExists(username,refreshToken);
+            var userId = await _user.GetAsync(username,refreshToken);
 
             if(userId != Guid.Empty) 
             {
-                var user = await _repo.Logout(userId);
+                var user = await _repo.LogoutAsync(userId);
 
                 return new UserDTO() { Username = user.Username, Role = user.Role, Token = string.Empty, RefreshToken = string.Empty };
             }

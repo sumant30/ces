@@ -23,7 +23,7 @@ namespace CES.Api.Helpers
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.Username),
+                    new Claim(ClaimTypes.Email, user.Username),
                     new Claim(ClaimTypes.Role, user.Role),
 
                 }),
