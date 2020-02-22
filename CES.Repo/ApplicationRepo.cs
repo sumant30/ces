@@ -29,17 +29,10 @@ namespace CES.Repo
 
                 DynamicParameters parameter = new DynamicParameters();
                 parameter.Add("@ApplicationName", appName);
-                try
-                {
-                    var app = await con.QueryAsync<Application>("SaveApplication", parameter, commandType: CommandType.StoredProcedure);
 
-                    return app?.FirstOrDefault();
-                }
-                catch (Exception ex)
-                {
+                var app = await con.QueryAsync<Application>("SaveApplication", parameter, commandType: CommandType.StoredProcedure);
 
-                    throw;
-                }
+                return app?.FirstOrDefault();
             }
         }
     }
