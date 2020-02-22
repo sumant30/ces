@@ -19,6 +19,7 @@ namespace CES.Repo
         {
             _config = config;
         }
+               
         public async Task<Application> SaveAsync(Guid appId, string appName)
         {
             string connectionString = Convert.ToString(_config.GetConnectionString("CESConnection"));
@@ -35,5 +36,7 @@ namespace CES.Repo
                 return app?.FirstOrDefault();
             }
         }
+
+        
     }
 }

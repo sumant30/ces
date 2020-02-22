@@ -1,4 +1,5 @@
-﻿using CES.Entities.Enums;
+﻿using CES.Api.Models;
+using CES.Entities.Enums;
 using CES.Entities.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -75,21 +76,7 @@ namespace CES.Api.Controllers
 		}
 				
 
-		// POST: api/UserManagement/{userId}/Revoke/{applicationId}
-		[Route("Revoke")]
-		[HttpPut]
-		public async Task<IActionResult> Revoke(Guid userId,Guid applicationId, string refreshToken, string grantTypeodel)
-		{
-			throw new NotImplementedException();
-		}
-
-		// POST: api/UserManagement/{userId}/Grant/{applicationId}
-		[Route("Grant")]
-		[HttpPut]
-		public async Task<IActionResult> Grant(Guid userId, Guid applicationId, string refreshToken, string grantTypel)
-		{
-			throw new NotImplementedException();
-		}
+		
 
 		private async Task<Guid> GetAdminId(string refreshToken, Claim username) => await _user.GetAsync(username?.Value, refreshToken);
 

@@ -12,5 +12,7 @@ namespace CES.Entities.Interfaces
         Task<bool> RequestExists(Guid userId, Guid appId);
         Task SaveAppRequest(Guid userId, Guid appId,string accessType);
         Task<List<AppReqDTO>> GetApplicationRequests(string username);
+        Task Approve(Guid userId, Guid appId);
+        Task Reject(Guid userId, Guid appId);
     }
 }

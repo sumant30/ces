@@ -9,6 +9,6 @@ namespace CES.Entities.Interfaces
 {
     public interface IApplicationRepo
     {
-        Task<Application> SaveAsync(Guid appId,string appName);
+        Task<Application> SaveAsync(Guid appId,string appName);       
     }
 }

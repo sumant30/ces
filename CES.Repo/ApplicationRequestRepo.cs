@@ -73,5 +73,41 @@ namespace CES.Repo
                 return appReq?.AsList();
             }
         }
+
+        public async Task Approve(Guid userId, Guid appId)
+        {
+            string connectionString = Convert.ToString(_config.GetConnectionString("CESConnection"));
+            using (IDbConnection con = new SqlConnection(connectionString))
+            {
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
+                DynamicParameters parameter = new DynamicParameters();
+                parameter.Add("@UserId", userId);
+                parameter.Add("@AppId", appId);
+
+                await con.ExecuteAsync("Approve", parameter, commandType: CommandType.StoredProcedure);
+
+                await Task.CompletedTask;
+            }
+        }
+
+        public async Task Reject(Guid userId, Guid appId)
+        {
+            string connectionString = Convert.ToString(_config.GetConnectionString("CESConnection"));
+            using (IDbConnection con = new SqlConnection(connectionString))
+            {
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
+                DynamicParameters parameter = new DynamicParameters();
+                parameter.Add("@UserId", userId);
+                parameter.Add("@AppId", appId);
+
+                await con.ExecuteAsync("Reject", parameter, commandType: CommandType.StoredProcedure);
+
+                await Task.CompletedTask;
+            }
+        }
     }
 }

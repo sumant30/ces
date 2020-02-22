@@ -45,6 +45,32 @@ namespace CES.Api.Controllers
             return BadRequest();
         }
 
+        // PUT: api/UserManagement/Reject
+        [Route("Revoke")]
+        [HttpPut]
+        public async Task<IActionResult> Reject([FromBody] AccessTypeModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                await _req.Reject(model.UserId, model.ApplicationId);
+                return NoContent();
+            }
+            return BadRequest();
+        }
+
+        // PUT: api/UserManagement/Approve
+        [Route("Grant")]
+        [HttpPut]
+        public async Task<IActionResult> Approve([FromBody] AccessTypeModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                await _req.Approve(model.UserId, model.ApplicationId);
+                return NoContent();
+            }
+            return BadRequest();
+        }
+
         private async Task<Guid> GetId(string refreshToken, string username) => await _user.GetAsync(username, refreshToken);
 
     }

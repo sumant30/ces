@@ -30,7 +30,7 @@ namespace CES.Api.Controllers
            
         }
 
-        // PUT: api/User/sumant@test.com/ChangePassword/{newPassword}
+        // PUT
         [Route("ChangePassword/{newPassword}")]
         [HttpPut]
         public async Task<IActionResult> Put(string newPassword)
@@ -40,7 +40,7 @@ namespace CES.Api.Controllers
             return Ok("Password changed successfully.");
         }
 
-        // PUT: api/User/ForgotPassword
+        // GET: api/User/ForgotPassword
         [Route("ForgotPassword")]
         [HttpGet]
         public async Task<IActionResult> ForgotPassword()

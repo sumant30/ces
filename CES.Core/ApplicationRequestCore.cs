@@ -47,5 +47,17 @@ namespace CES.Core
             }
             return new List<AppReqDTO>();
         }
+
+        public async Task Approve(Guid userId, Guid appId)
+        {
+            await _repo.Approve(userId, appId);
+            await Task.CompletedTask;
+        }
+
+        public async Task Reject(Guid userId, Guid appId)
+        {
+            await _repo.Reject(userId, appId);
+            await Task.CompletedTask;
+        }
     }
 }
