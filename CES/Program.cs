@@ -27,10 +27,10 @@ namespace CES
             }).UseSerilog((ctx, cfg) =>
             {
                 cfg.ReadFrom.Configuration(ctx.Configuration)
-                .MinimumLevel.Debug()
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
-                .WriteTo.File("Logs/CIS-Log-{Date}.txt", rollingInterval: RollingInterval.Day,
-                outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} {Level:u3} {SourceContext} : {Message:lj}{Newline}{Exception}]");
+                .MinimumLevel.Debug();
+                //.MinimumLevel.Override("Microsoft", LogEventLevel.Information)
+                //.WriteTo.File("Logs/CIS-Log-{Date}.txt", rollingInterval: RollingInterval.Day,
+                //outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} {Level:u3} {SourceContext} : {Message:lj}{Newline}{Exception}]");
             }).UseStartup<Startup>();
         }
 
