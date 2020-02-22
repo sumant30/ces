@@ -43,7 +43,7 @@ namespace CES.Api.Controllers
 				}
 				else
 				{
-					return BadRequest($"{username} with {adminId} does not exist");
+					return BadRequest($"{username} with refresh token {refreshToken} does not exist");
 				}
 			}
 			return BadRequest();
@@ -69,7 +69,7 @@ namespace CES.Api.Controllers
 
 					return Ok(user);
 				}
-				return BadRequest($"{username} with {adminId} does not exist");
+				return BadRequest($"{username} with refresh token {refreshToken} does not exist");
 			}
 			return BadRequest();
 		}

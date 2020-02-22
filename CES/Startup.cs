@@ -79,6 +79,9 @@ namespace CES
 
             services.AddScoped<IUserManagementCore, UserManagementCore>();
             services.AddScoped<IUserManagementRepo, UserManagementRepo>();
+
+            services.AddScoped<IApplicationCore, ApplicationCore>();
+            services.AddScoped<IApplicationRepo, ApplicationRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -88,6 +91,8 @@ namespace CES
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 
