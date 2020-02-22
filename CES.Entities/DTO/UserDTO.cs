@@ -10,6 +10,6 @@ namespace CES.Entities.DTO
         public string Role { get; set; }
         public string RefreshToken { get; set; }
         public string Token { get; set; }
-        public string ClientSecret { get; set; }
+        public string ClientSecret { get; set; }        
     }
 }

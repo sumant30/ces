@@ -1,4 +1,5 @@
-﻿using CES.Entities.Interfaces;
+﻿using CES.Entities.DB;
+using CES.Entities.Interfaces;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -17,6 +18,7 @@ namespace CES.Repo
         {
             _config = config;
         }
+        
         public async Task<int> RequestExists(Guid userId, Guid appId)
         {
             string connectionString = Convert.ToString(_config.GetConnectionString("CESConnection"));
@@ -51,6 +53,24 @@ namespace CES.Repo
                 await con.ExecuteScalarAsync("SaveAppRequest", parameter, commandType: CommandType.StoredProcedure);
 
                 await Task.CompletedTask;
+            }
+        }
+
+        public async Task<List<AppReq>> GetApplicationRequests(string username)
+        {
+            string connectionString = Convert.ToString(_config.GetConnectionString("CESConnection"));
+            using (IDbConnection con = new SqlConnection(connectionString))
+            {
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
+                DynamicParameters parameter = new DynamicParameters();
+                parameter.Add("@Username", username);
+
+
+                var appReq = await con.QueryAsync<AppReq>("GetUserAppReqDetails", parameter, commandType: CommandType.StoredProcedure);
+
+                return appReq?.AsList();
             }
         }
     }

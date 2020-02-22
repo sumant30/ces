@@ -38,7 +38,7 @@ namespace CES.Api.Controllers
                     dto.GenerateToken();
                     return Ok(dto);
                 }
-                return NotFound($"{model.Username} does not exists");
+                return NotFound($"{model.Username} does not exists for given password.");
             }
             return BadRequest();
         }
