@@ -35,8 +35,6 @@ namespace CES.Api.Controllers
 
             }
             return BadRequest();
-        }
-
-       
+        }      
     }
 }

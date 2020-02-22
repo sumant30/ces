@@ -76,16 +76,16 @@ namespace CES.Api.Controllers
 				
 
 		// POST: api/UserManagement/{userId}/Revoke/{applicationId}
-		[Route("{userId:Guid}/Revoke/{applicationId:Guid}")]
-		[HttpPost]
+		[Route("Revoke")]
+		[HttpPut]
 		public async Task<IActionResult> Revoke(Guid userId,Guid applicationId, string refreshToken, string grantTypeodel)
 		{
 			throw new NotImplementedException();
 		}
 
 		// POST: api/UserManagement/{userId}/Grant/{applicationId}
-		[Route("{userId:Guid}/Grant/{applicationId:Guid}")]
-		[HttpPost]
+		[Route("Grant")]
+		[HttpPut]
 		public async Task<IActionResult> Grant(Guid userId, Guid applicationId, string refreshToken, string grantTypel)
 		{
 			throw new NotImplementedException();

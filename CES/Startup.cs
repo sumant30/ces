@@ -82,6 +82,9 @@ namespace CES
 
             services.AddScoped<IApplicationCore, ApplicationCore>();
             services.AddScoped<IApplicationRepo, ApplicationRepo>();
+
+            services.AddScoped<IApplicationRequestCore, ApplicationRequestCore>();
+            services.AddScoped<IApplicationRequestRepo, ApplicationRequestRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
