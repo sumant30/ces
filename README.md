@@ -3,18 +3,16 @@ Project created in VS 2019, with dotnet core 3.1.
 
 It has a project structure of 
 
-1. Api 
+1. Api - Contains all the controller actions.
 
-Contains all the controller actions.
+2. Entities - Contains all the common entities, enums and interfaces which is used across the project.
 
-2. Entities
+3. Core - Contains the bussiness logic for the solution.
 
-Contains all the common entities, enums and interfaces which is used across the project.
+4. Repository - Contains data access logic done with Dapper ORM.
 
-3. Core
+Steps for running the project
+------------------------------
 
-Contains the bussiness logic for the solution.
-
-4. Repository
-
-Contains data access logic done with Dapper ORM.
+1. First run the Create Table script.
+2. Secondly run the Create Procedure script.
