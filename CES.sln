@@ -3,13 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CES.Api", "CES\CES.Api.csproj", "{774BAE16-D4D7-4BD0-AE68-125CDAD11435}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CES.Api", "CES\CES.Api.csproj", "{774BAE16-D4D7-4BD0-AE68-125CDAD11435}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CES.Entities", "CES.Entities\CES.Entities.csproj", "{37BB602A-9077-4822-B911-ABD44033EE0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CES.Entities", "CES.Entities\CES.Entities.csproj", "{37BB602A-9077-4822-B911-ABD44033EE0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CES.Core", "CES.Core\CES.Core.csproj", "{6C03B715-6DF0-4141-8A87-8C8294270CE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CES.Core", "CES.Core\CES.Core.csproj", "{6C03B715-6DF0-4141-8A87-8C8294270CE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CES.Repo", "CES.Repo\CES.Repo.csproj", "{043E9EC5-1CC7-4B9F-8166-56135FFECAE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CES.Repo", "CES.Repo\CES.Repo.csproj", "{043E9EC5-1CC7-4B9F-8166-56135FFECAE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{2ECBCDFB-A80E-4351-AFEE-119C2B09299B}"
+	ProjectSection(SolutionItems) = preProject
+		CES.DbScripts\CreateProcedures.sql = CES.DbScripts\CreateProcedures.sql
+		CES.DbScripts\CreateTables.sql = CES.DbScripts\CreateTables.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
