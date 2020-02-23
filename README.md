@@ -16,3 +16,6 @@ Steps for running the project
 
 1. First run the Create Table script.
 2. Secondly run the Create Procedure script.
+
+Note : Scripts can be found under https://github.com/sumant30/ces/tree/master/CES.DbScripts
+
